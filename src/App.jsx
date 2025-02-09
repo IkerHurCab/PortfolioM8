@@ -4,6 +4,8 @@ import Carrousel1 from './assets/carrusel1.png'
 import Carrousel2 from './assets/carrusel2.png'
 import jsPDF from 'jspdf'
 
+const API_URL = 'http://192.168.1.54/api/getCV';
+
 const images = [
   Carrousel1,
   Carrousel2,
@@ -120,7 +122,7 @@ export default function Layout({ children }) {
   const [CV, setCV] = useState(null);
 
   useEffect(() => {
-    fetch("http://192.168.1.54/api/getCV")
+    fetch(`${API_URL}`)
       .then(res => res.json())
       .then(data => setCV(data))
       .catch(error => console.error("Error al obtener datos:", error));
